@@ -110,4 +110,17 @@ export const Give = async (req: Request, res: Response): Promise<any> => {
       console.error('Error fetching users:', error.message);
       res.status(500).json({ message: 'Internal server error' });
     }
+     
+};
+
+export const Getme = async (req: Request, res: Response): Promise<any> => {
+    try {
+      const user = await prisma.user.findUnique({where:{id:req.user.id}})
+      console.log(user)
+      console.log("adfsadfads")
+       return res.status(200).json(user)
+    } catch (error: any) {
+      console.error('Error fetching users:', error.message);
+      res.status(500).json({ message: 'Internal server error' });
+    }
 };

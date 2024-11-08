@@ -1,9 +1,11 @@
 import express from "express";
-import { Give, Login, Logout, Signup } from '../controller/auth_controller';
+import { Getme, Give, Login, Logout, Signup } from '../controller/auth_controller';
+import protectRoute from "../middlewares/genToken"
 
 const router = express.Router();
 
-// Changed login to POST for better practice
+
+router.get("/me",protectRoute, Getme);
 router.post("/signup", Signup);
 router.post("/login", Login); // Changed to POST
 
