@@ -31,8 +31,11 @@ model Conversation {
   id            String         @id @default(cuid())
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
-  
-  participants  User[]         
+
+  participantsIDs String[]
+  participants  User[]   
+
+  messageIds String[]      
   messages      Message[]      
 }
 
